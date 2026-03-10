@@ -684,7 +684,7 @@ document.addEventListener('touchstart', function(e) {
 });
 
 // ── Popup info pages (click on GIF zones) ──
-var infoBase = 'https://www.gtue.de/apps/typdatensuche/Vergleich_Fzgschein-CoC/';
+var infoBase = '/proxy-coc/';
 var popupByTitle = {
   'B:':      'info-seiten/b_erstzulassung.htm',
   '(2.1):':  'info-seiten/02-1_code_22.htm',
@@ -749,13 +749,36 @@ document.querySelectorAll('.field-zone').forEach(function(zone) {
     if (title.indexOf(prefix) === 0) {
       (function(url) {
         zone.addEventListener('click', function() {
-          window.open(infoBase + url, 'info', 'scrollbars=yes,width=400,height=300');
+          showInfo(infoBase + url);
         });
       })(popupByTitle[prefix]);
       break;
     }
   }
 });
+
+// ── Modal for info popups (works on mobile) ──
+function showInfo(url) {
+  document.getElementById('infoFrame').src = url;
+  document.getElementById('infoModal').style.display = 'block';
+}
+function closeInfo() {
+  document.getElementById('infoModal').style.display = 'none';
+  document.getElementById('infoFrame').src = 'about:blank';
+}
+window.addEventListener('message', function(e) {
+  if (e.data === 'closeModal') closeInfo();
+});
 </script>
+
+<div id="infoModal" onclick="if(event.target===this)closeInfo()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:9999;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:92%;max-width:440px;height:70vh;max-height:380px;background:#fff;border-radius:5px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+    <div style="display:flex;justify-content:flex-end;padding:2px 6px;background:#eee;border-bottom:1px solid #ccc;">
+      <button onclick="closeInfo()" style="border:none;background:none;font-size:20px;cursor:pointer;color:#555;padding:0 4px;line-height:1;">&#10005;</button>
+    </div>
+    <iframe id="infoFrame" style="width:100%;height:calc(100% - 28px);border:none;" src="about:blank"></iframe>
+  </div>
+</div>
+
 </body>
 </html>

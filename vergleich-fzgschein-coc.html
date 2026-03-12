@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <title>Arbeitshilfe zum Ausfüllen der Zulassungsbescheinigung Teil I</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -14,29 +14,12 @@
   --bg-hl: #127bb5;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
+html, body {
   font-family: 'IBM Plex Sans', Arial, sans-serif;
   font-size: 12px;
   color: var(--dark);
-  background: #f0f0f0;
-}
-
-.logo-bar {
   background: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 6px 24px;
-  display: flex;
-  justify-content: flex-end;
-}
-.logo {
-  background: #c0392b;
-  color: #fff;
-  font-weight: 900;
-  font-size: 20px;
-  padding: 3px 10px;
-  border-radius: 3px;
-  font-style: italic;
-  letter-spacing: 1px;
+  min-width: 1160px;
 }
 
 .page-wrap {
@@ -82,10 +65,6 @@ body {
   top: 0; left: 0;
 }
 
-/*
-  field-zone: transparent overlay rectangles on GIF.
-  Positioned via top/left/width/height to match original image map coords.
-*/
 .field-zone {
   position: absolute;
   cursor: pointer;
@@ -131,7 +110,6 @@ body {
   cursor: default;
   transition: background 0.15s;
 }
-/* Highlight: solid dark red background, white text — matches original */
 .coc-table td.hl {
   background: var(--bg-hl) !important;
   color: #fff !important;
@@ -144,7 +122,6 @@ body {
 .coc-table td.hl sup {
   color: #fff !important;
 }
-/* Interactive cells get pointer cursor */
 .coc-table td[data-gif] { cursor: pointer; }
 
 .fn { display:block; font-size:9px; font-weight:700; color:var(--blue); font-family:'IBM Plex Mono',monospace; margin-bottom:1px; }
@@ -159,14 +136,6 @@ body {
   border-top: 1px solid #eee;
   padding-top: 10px;
 }
-.page-footer {
-  background: var(--dark);
-  color: #aaa;
-  font-size: 10px;
-  padding: 9px 24px;
-  margin-top: 0;
-}
-.page-footer a { color: var(--blue); text-decoration: none; }
 </style>
 </head>
 <body>
@@ -180,155 +149,92 @@ body {
 
   <div class="main-layout">
 
-    <!-- ══════════ GIF + HOVER ZONES ══════════ -->
-    <!--
-      Each field-zone is placed using the original image map coords (x1,y1,x2,y2)
-      converted to left/top/width/height.
-      data-cells = comma-separated COC cell ids to highlight.
-    -->
     <div class="gif-wrap" id="gifWrap">
       <img class="zula-img" src="zula.gif" alt="Zulassungsbescheinigung Teil I">
 
-      <!-- B: Erstzulassung (no COC cell) -->
       <div class="field-zone" style="left:2px;top:102px;width:117px;height:15px;" title="B: Datum der Erstzulassung des Fahrzeuges"></div>
-      <!-- (2.1): Code zu (2) (no COC cell) -->
       <div class="field-zone" style="left:119px;top:102px;width:58px;height:15px;" title="(2.1): Code zu (2) 2"></div>
-      <!-- (2.2): Code zu D.2 (no COC cell) -->
       <div class="field-zone" style="left:177px;top:102px;width:99px;height:16px;" title="(2.2): Code zu D.2 mit Prüfziffer 3"></div>
 
-      <!-- J: Fahrzeugklasse → 0-4 -->
       <div class="field-zone" data-cells="0-4" style="left:2px;top:117px;width:136px;height:17px;" title="J: Fahrzeugklasse"></div>
-      <!-- (4): Art des Aufbaus → 37 -->
       <div class="field-zone" data-cells="37" style="left:138px;top:117px;width:137px;height:16px;" title="(4): Art des Aufbaus"></div>
 
-      <!-- E: Fahrzeug-Identifizierungsnummer → 0-6 -->
       <div class="field-zone" data-cells="0-6" style="left:2px;top:134px;width:215px;height:16px;" title="E: Fahrzeug-Identifizierungsnummer"></div>
-      <!-- (3): Prüfziffer (no COC cell) -->
       <div class="field-zone" style="left:216px;top:133px;width:59px;height:17px;" title="(3): Prüfziffer zur Fahrzeug-Identifizierungsnummer"></div>
 
-      <!-- D.1: Marke → 0-1 -->
       <div class="field-zone" data-cells="0-1" style="left:2px;top:150px;width:272px;height:17px;" title="D.1: Marke"></div>
 
-      <!-- D.2: Typ/Variante/Version → 0-2 -->
       <div class="field-zone" data-cells="0-2" style="left:2px;top:166px;width:272px;height:64px;" title="D.2: Typ/Variante/Version"></div>
 
-      <!-- D.3: Handelsbezeichnung(en) → 0-2-1 -->
       <div class="field-zone" data-cells="0-2-1" style="left:2px;top:230px;width:273px;height:17px;" title="D.3: Handelsbezeichnung(en)"></div>
 
-      <!-- (2): Hersteller-Kurzbezeichnung (no COC cell) -->
       <div class="field-zone" style="left:1px;top:246px;width:274px;height:17px;" title="(2): Hersteller-Kurzbezeichnung"></div>
-      <!-- (5): Bezeichnung der Fahrzeugklasse (no COC cell) -->
       <div class="field-zone" style="left:1px;top:262px;width:274px;height:34px;" title="(5): Bezeichnung der Fahrzeugklasse und des Aufbaus"></div>
 
-      <!-- V.9: Schadstoffklasse → 46 -->
       <div class="field-zone" data-cells="46" style="left:1px;top:295px;width:274px;height:16px;" title="V.9: Schadstoffklasse"></div>
-      <!-- (14): Nationale Emissionsklasse (no COC cell) -->
       <div class="field-zone" style="left:1px;top:310px;width:274px;height:17px;" title="(14): Bezeichnung der nationalen Emissionsklasse"></div>
 
-      <!-- P.3: Kraftstoffart → 25 -->
       <div class="field-zone" data-cells="25" style="left:1px;top:327px;width:274px;height:16px;" title="P.3: Kraftstoffart oder Energiequelle"></div>
-      <!-- (10): Code zu P.3 (no COC cell) -->
       <div class="field-zone" style="left:1px;top:343px;width:88px;height:17px;" title="(10): Code zu P.3"></div>
-      <!-- (14.1): Code zu V.9 → 47 -->
       <div class="field-zone" data-cells="47" style="left:88px;top:343px;width:89px;height:17px;" title="(14.1): Code zu V.9 oder (14)"></div>
-      <!-- P.1: Hubraum → 24 -->
       <div class="field-zone" data-cells="24" style="left:176px;top:343px;width:99px;height:17px;" title="P.1: Hubraum in cm³"></div>
 
-      <!-- (22): Bemerkungen #1 (upper block) → 50 -->
       <div class="field-zone" data-cells="50" style="left:1px;top:360px;width:275px;height:68px;" title="(22): Bemerkungen und Ausnahmen"></div>
 
-      <!-- ── LOWER BLOCK (second part of certificate) ── -->
-
-      <!-- L: Anzahl der Achsen → 1 -->
       <div class="field-zone" data-cells="1" style="left:1px;top:439px;width:49px;height:18px;" title="L: Anzahl der Achsen"></div>
-      <!-- (9): Antriebsachsen → 2 -->
       <div class="field-zone" data-cells="2" style="left:50px;top:439px;width:49px;height:17px;" title="(9): Anzahl der Antriebsachsen"></div>
-      <!-- P.2/P.4: Nennleistung → 26 -->
       <div class="field-zone" data-cells="26" style="left:98px;top:439px;width:117px;height:18px;" title="P.2/P.4: Nennleistung in kW / Nenndrehzahl"></div>
-      <!-- T: Höchstgeschwindigkeit → 44 -->
       <div class="field-zone" data-cells="44" style="left:214px;top:439px;width:62px;height:18px;" title="T: Höchstgeschwindigkeit in km/h"></div>
 
-      <!-- (18): Länge → 6-1 -->
       <div class="field-zone" data-cells="6-1" style="left:0px;top:456px;width:137px;height:16px;" title="(18): Länge in mm"></div>
-      <!-- (19): Breite → 7-1 -->
       <div class="field-zone" data-cells="7-1" style="left:137px;top:456px;width:140px;height:17px;" title="(19): Breite in mm"></div>
 
-      <!-- (20): Höhe → 8 -->
       <div class="field-zone" data-cells="8" style="left:1px;top:472px;width:137px;height:17px;" title="(20): Höhe in mm"></div>
-      <!-- G: Leermasse → 12-1 -->
       <div class="field-zone" data-cells="12-1" style="left:138px;top:472px;width:139px;height:18px;" title="G: Masse des Fahrzeugs in kg (Leermasse)"></div>
 
-      <!-- (12): Tankinhalt (no COC cell) -->
       <div class="field-zone" style="left:1px;top:488px;width:78px;height:16px;" title="(12): Rauminhalt des Tanks"></div>
-      <!-- (13): Stützlast → 19-1 -->
       <div class="field-zone" data-cells="19-1" style="left:78px;top:488px;width:98px;height:17px;" title="(13): Stützlast in kg"></div>
-      <!-- Q: Leistungsgewicht (no COC cell) -->
       <div class="field-zone" style="left:175px;top:489px;width:102px;height:17px;" title="Q: Leistungsgewicht in kW/kg"></div>
 
-      <!-- V.7: CO2 → 46-2 -->
       <div class="field-zone" data-cells="46-2" style="left:1px;top:504px;width:77px;height:16px;" title="V.7: CO₂ kombinierter Wert"></div>
-      <!-- F.1: Technisch zulässige Gesamtmasse → 14-1 -->
       <div class="field-zone" data-cells="14-1" style="left:77px;top:504px;width:98px;height:16px;" title="F.1: Technisch zulässige Gesamtmasse in kg"></div>
-      <!-- F.2: Zulässige Gesamtmasse (no COC cell) -->
       <div class="field-zone" style="left:175px;top:504px;width:101px;height:17px;" title="F.2: Im Zulassungsmitgliedstaat zulässige Gesamtmasse"></div>
 
-      <!-- (7.1): Achslast Achse 1 → 14-3 -->
       <div class="field-zone" data-cells="14-3" style="left:1px;top:520px;width:77px;height:17px;" title="(7.1): Technisch zulässige maximale Achslast, Achse 1"></div>
-      <!-- (7.2): Achslast Achse 2 → 14-3 -->
       <div class="field-zone" data-cells="14-3" style="left:77px;top:520px;width:99px;height:17px;" title="(7.2): Technisch zulässige maximale Achslast, Achse 2"></div>
-      <!-- (7.3): Achslast Achse 3 (no COC cell) -->
       <div class="field-zone" style="left:175px;top:520px;width:102px;height:17px;" title="(7.3): Achslast Achse 3"></div>
 
-      <!-- (8.1)-(8.3): Zulässige Achslast (no COC cell) -->
       <div class="field-zone" style="left:0px;top:537px;width:78px;height:16px;" title="(8.1): Zulässige maximale Achslast Achse 1"></div>
       <div class="field-zone" style="left:77px;top:536px;width:98px;height:17px;" title="(8.2): Zulässige maximale Achslast Achse 2"></div>
       <div class="field-zone" style="left:174px;top:536px;width:102px;height:17px;" title="(8.3): Zulässige maximale Achslast Achse 3"></div>
 
-      <!-- U.1: Standgeräusch → 45 -->
       <div class="field-zone" data-cells="45" style="left:0px;top:553px;width:78px;height:16px;" title="U.1: Standgeräusche in dB(A)"></div>
-      <!-- U.2: Drehzahl → 45 -->
       <div class="field-zone" data-cells="45" style="left:77px;top:553px;width:99px;height:16px;" title="U.2: Drehzahl in min⁻¹ zu U.1"></div>
-      <!-- U.3: Fahrgeräusch → 45 -->
       <div class="field-zone" data-cells="45" style="left:175px;top:552px;width:102px;height:18px;" title="U.3: Fahrgeräusch in dB(A)"></div>
 
-      <!-- O.1: Anhängelast gebremst → 17 -->
       <div class="field-zone" data-cells="17" style="left:1px;top:568px;width:78px;height:17px;" title="O.1: Technisch zulässige Anhängelast gebremst"></div>
-      <!-- O.2: Anhängelast ungebremst → 17 -->
       <div class="field-zone" data-cells="17" style="left:79px;top:568px;width:87px;height:17px;" title="O.2: Technisch zulässige Anhängelast ungebremst"></div>
-      <!-- S.1: Sitzplätze → 42-1 -->
       <div class="field-zone" data-cells="42-1" style="left:165px;top:569px;width:49px;height:16px;" title="S.1: Sitzplätze einschließlich Fahrersitz"></div>
-      <!-- S.2: Stehplätze (no COC cell) -->
       <div class="field-zone" style="left:213px;top:569px;width:64px;height:16px;" title="S.2: Stehplätze"></div>
 
-      <!-- (15.1): Bereifung Achse 1 → 32 -->
       <div class="field-zone" data-cells="32" style="left:1px;top:585px;width:276px;height:17px;" title="(15.1): Bereifung auf Achse 1"></div>
-      <!-- (15.2): Bereifung Achse 2 → 32 -->
       <div class="field-zone" data-cells="32" style="left:1px;top:601px;width:275px;height:17px;" title="(15.2): Bereifung auf Achse 2"></div>
-      <!-- (15.3): Bereifung Achse 3 (no COC cell) -->
       <div class="field-zone" style="left:1px;top:618px;width:275px;height:16px;" title="(15.3): Bereifung auf Achse 3"></div>
 
-      <!-- R: Farbe → 38 -->
       <div class="field-zone" data-cells="38" style="left:1px;top:634px;width:164px;height:16px;" title="R: Farbe des Fahrzeuges"></div>
-      <!-- (11): Code zu R (no COC cell) -->
       <div class="field-zone" style="left:165px;top:634px;width:111px;height:16px;" title="(11): Code zu R"></div>
 
-      <!-- K: EG-Typgenehmigung → eg-typ -->
       <div class="field-zone" data-cells="eg-typ" style="left:0px;top:650px;width:277px;height:16px;" title="K: Nummer der EG-Typgenehmigung oder ABE"></div>
-      <!-- (6): Datum zu K → eg-typ -->
       <div class="field-zone" data-cells="eg-typ" style="left:1px;top:666px;width:136px;height:16px;" title="(6): Datum zu K"></div>
-      <!-- (17): Betriebserlaubnis (no COC cell) -->
       <div class="field-zone" style="left:136px;top:665px;width:30px;height:17px;" title="(17): Merkmal zur Betriebserlaubnis"></div>
-      <!-- (16): Zulassungsbescheinigung Teil II (no COC cell) -->
       <div class="field-zone" style="left:166px;top:665px;width:110px;height:17px;" title="(16): Nummer der Zulassungsbescheinigung Teil II"></div>
 
-      <!-- (21): Sonstige Vermerke (no COC cell) -->
       <div class="field-zone" style="left:1px;top:682px;width:276px;height:16px;" title="(21): Sonstige Vermerke"></div>
 
-      <!-- (22): Bemerkungen #2 (lower block) → 50 -->
       <div class="field-zone" data-cells="50" style="left:1px;top:698px;width:275px;height:66px;" title="(22): Bemerkungen und Ausnahmen"></div>
     </div>
 
-    <!-- ══════════ COC TABLE ══════════ -->
+    <!-- COC TABLE -->
     <div class="right-panel">
       <div class="right-title">EWG-Übereinstimmungsbescheinigung</div>
       <table class="coc-table">
@@ -598,39 +504,32 @@ body {
   </div>
 </div>
 
-
+<!-- Small popup modal -->
+<div id="infoModal" onclick="if(event.target===this)closeInfo()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:9999;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;max-width:95vw;height:420px;background:#fff;border-radius:5px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+    <div style="display:flex;justify-content:flex-end;padding:2px 6px;background:#eee;border-bottom:1px solid #ccc;">
+      <button onclick="closeInfo()" style="border:none;background:none;font-size:20px;cursor:pointer;color:#555;padding:0 4px;line-height:1;">&#10005;</button>
+    </div>
+    <iframe id="infoFrame" style="width:100%;height:calc(100% - 28px);border:none;" src="about:blank"></iframe>
+  </div>
+</div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-//  BIDIRECTIONAL HOVER: GIF zones ↔ COC table cells
-//  Matches original GTÜ site behavior:
-//    - GIF zone hover → highlight matching COC cell(s) by id
-//    - COC cell hover → highlight matching GIF zone(s)
-// ═══════════════════════════════════════════════════════
-
-// ── Helper: clear all highlights ──
 function clearAll() {
   document.querySelectorAll('.field-zone.active').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.coc-table td.hl').forEach(el => el.classList.remove('hl'));
 }
 
-// ── GIF zone → COC cell highlighting ──
 document.querySelectorAll('.field-zone[data-cells]').forEach(zone => {
   const cellIds = zone.getAttribute('data-cells').split(',').map(s => s.trim());
 
   function activate() {
     zone.classList.add('active');
-    cellIds.forEach(id => {
-      const td = document.getElementById(id);
-      if (td) td.classList.add('hl');
-    });
+    cellIds.forEach(id => { const td = document.getElementById(id); if (td) td.classList.add('hl'); });
   }
   function deactivate() {
     zone.classList.remove('active');
-    cellIds.forEach(id => {
-      const td = document.getElementById(id);
-      if (td) td.classList.remove('hl');
-    });
+    cellIds.forEach(id => { const td = document.getElementById(id); if (td) td.classList.remove('hl'); });
   }
 
   zone.addEventListener('mouseenter', activate);
@@ -643,7 +542,6 @@ document.querySelectorAll('.field-zone[data-cells]').forEach(zone => {
   }, {passive: false});
 });
 
-// ── COC cell → GIF zone highlighting ──
 const cellToZones = {};
 document.querySelectorAll('.field-zone[data-cells]').forEach(zone => {
   zone.getAttribute('data-cells').split(',').forEach(id => {
@@ -676,82 +574,39 @@ document.querySelectorAll('.coc-table td[id]').forEach(td => {
   }, {passive: false});
 });
 
-// ── Tap on empty area clears all highlights ──
 document.addEventListener('touchstart', function(e) {
-  if (!e.target.closest('.field-zone') && !e.target.closest('.coc-table td[id]')) {
-    clearAll();
-  }
+  if (!e.target.closest('.field-zone') && !e.target.closest('.coc-table td[id]')) clearAll();
 });
 
-// ── Popup info pages (click on GIF zones) ──
 var infoBase = 'info-seiten-coc/';
 var popupByTitle = {
-  'B:':      'b_erstzulassung.htm',
-  '(2.1):':  '02-1_code_22.htm',
-  '(2.2):':  '02-2_code_d2.htm',
-  'J:':      'j_fzg-klasse.htm',
-  '(4):':    '04_aufbau.htm',
-  'E:':      'e_fzg-ident-nr.htm',
-  '(3):':    '03_fzg-ident-nr.htm',
-  'D.1:':    'd1_marke.htm',
-  'D.2:':    'd2_typ.htm',
-  'D.3:':    'd3_handelsbezeichnung.htm',
-  '(2):':    '02_hersteller.htm',
-  '(5):':    '05_fzg-klasse.htm',
-  'V.9:':    'v9_schadstoffklasse.htm',
-  '(14):':   '14_emissionsklasse.htm',
-  'P.3:':    'p3_kraftstoffart.htm',
-  '(10):':   '10_code_p3.htm',
-  '(14.1):': '14-1_code_v9.htm',
-  'P.1:':    'p1_hubraum.htm',
-  '(22):':   '22_bemerkungen.htm',
-  'L:':      'l_achsen.htm',
-  '(9):':    '09_antriebsachsen.htm',
-  'P.2/P.4:':'p2_p4_leistung.htm',
-  'T:':      't_geschwindigkeit.htm',
-  '(18):':   '18_laenge.htm',
-  '(19):':   '19_breite.htm',
-  '(20):':   '20_hoehe.htm',
-  'G:':      'g_leermasse.htm',
-  '(12):':   '12_tankinhalt.htm',
-  '(13):':   '13_stuetzlast.htm',
-  'Q:':      'q_leistungsgewicht.htm',
-  'V.7:':    'v7_co2.htm',
-  'F.1:':    'f1_zgm.htm',
-  'F.2:':    'f2_zgm_staat.htm',
-  '(7.1):':  '07-1_achslast_max.htm',
-  '(7.2):':  '07-2_achslast_max.htm',
-  '(7.3):':  '07-3_achslast_max.htm',
-  '(8.1):':  '08-1_achslast_max.htm',
-  '(8.2):':  '08-2_achslast_max.htm',
-  '(8.3):':  '08-3_achslast_max.htm',
-  'U.1:':    'u1_standgeraeusch.htm',
-  'U.2:':    'u2_drehzahl.htm',
-  'U.3:':    'u3_fahrgeraeusch.htm',
-  'O.1:':    'o1_anhaengelast_gebremst.htm',
-  'O.2:':    'o2_anhaengelast_ungebremst.htm',
-  'S.1:':    's1_sitzplaetze.htm',
-  'S.2:':    's2_stehplaetze.htm',
-  '(15.1):': '15-1_bereifung.htm',
-  '(15.2):': '15-2_bereifung.htm',
-  '(15.3):': '15-3_bereifung.htm',
-  'R:':      'r_farbe.htm',
-  '(11):':   '11_code_r.htm',
-  'K:':      'k_eg-typ_abe.htm',
-  '(6):':    '06_datum.htm',
-  '(17):':   '17_betriebserlaubnis.htm',
-  '(16):':   '16_zulassungsbescheinigung.htm',
-  '(21):':   '21_vermerke.htm'
+  'B:':'b_erstzulassung.htm','(2.1):':'02-1_code_22.htm','(2.2):':'02-2_code_d2.htm',
+  'J:':'j_fzg-klasse.htm','(4):':'04_aufbau.htm','E:':'e_fzg-ident-nr.htm',
+  '(3):':'03_fzg-ident-nr.htm','D.1:':'d1_marke.htm','D.2:':'d2_typ.htm',
+  'D.3:':'d3_handelsbezeichnung.htm','(2):':'02_hersteller.htm','(5):':'05_fzg-klasse.htm',
+  'V.9:':'v9_schadstoffklasse.htm','(14):':'14_emissionsklasse.htm','P.3:':'p3_kraftstoffart.htm',
+  '(10):':'10_code_p3.htm','(14.1):':'14-1_code_v9.htm','P.1:':'p1_hubraum.htm',
+  '(22):':'22_bemerkungen.htm','L:':'l_achsen.htm','(9):':'09_antriebsachsen.htm',
+  'P.2/P.4:':'p2_p4_leistung.htm','T:':'t_geschwindigkeit.htm','(18):':'18_laenge.htm',
+  '(19):':'19_breite.htm','(20):':'20_hoehe.htm','G:':'g_leermasse.htm',
+  '(12):':'12_tankinhalt.htm','(13):':'13_stuetzlast.htm','Q:':'q_leistungsgewicht.htm',
+  'V.7:':'v7_co2.htm','F.1:':'f1_zgm.htm','F.2:':'f2_zgm_staat.htm',
+  '(7.1):':'07-1_achslast_max.htm','(7.2):':'07-2_achslast_max.htm','(7.3):':'07-3_achslast_max.htm',
+  '(8.1):':'08-1_achslast_max.htm','(8.2):':'08-2_achslast_max.htm','(8.3):':'08-3_achslast_max.htm',
+  'U.1:':'u1_standgeraeusch.htm','U.2:':'u2_drehzahl.htm','U.3:':'u3_fahrgeraeusch.htm',
+  'O.1:':'o1_anhaengelast_gebremst.htm','O.2:':'o2_anhaengelast_ungebremst.htm',
+  'S.1:':'s1_sitzplaetze.htm','S.2:':'s2_stehplaetze.htm',
+  '(15.1):':'15-1_bereifung.htm','(15.2):':'15-2_bereifung.htm','(15.3):':'15-3_bereifung.htm',
+  'R:':'r_farbe.htm','(11):':'11_code_r.htm','K:':'k_eg-typ_abe.htm','(6):':'06_datum.htm',
+  '(17):':'17_betriebserlaubnis.htm','(16):':'16_zulassungsbescheinigung.htm','(21):':'21_vermerke.htm'
 };
+
 document.querySelectorAll('.field-zone').forEach(function(zone) {
   var title = zone.getAttribute('title') || '';
   for (var prefix in popupByTitle) {
     if (title.indexOf(prefix) === 0) {
       (function(url) {
-        function openModal(e) {
-          e.preventDefault();
-          showInfo(infoBase + url);
-        }
+        function openModal(e) { e.preventDefault(); showInfo(infoBase + url); }
         zone.addEventListener('click', openModal);
         zone.addEventListener('touchend', openModal, {passive: false});
       })(popupByTitle[prefix]);
@@ -760,7 +615,6 @@ document.querySelectorAll('.field-zone').forEach(function(zone) {
   }
 });
 
-// ── Modal for info popups (works on mobile) ──
 function showInfo(url) {
   document.getElementById('infoFrame').src = url;
   document.getElementById('infoModal').style.display = 'block';
@@ -769,19 +623,7 @@ function closeInfo() {
   document.getElementById('infoModal').style.display = 'none';
   document.getElementById('infoFrame').src = 'about:blank';
 }
-window.addEventListener('message', function(e) {
-  if (e.data === 'closeModal') closeInfo();
-});
+window.addEventListener('message', function(e) { if (e.data === 'closeModal') closeInfo(); });
 </script>
-
-<div id="infoModal" onclick="if(event.target===this)closeInfo()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:9999;">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:98vw;height:80vh;background:#fff;border-radius:5px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
-    <div style="display:flex;justify-content:flex-end;padding:2px 6px;background:#eee;border-bottom:1px solid #ccc;">
-      <button onclick="closeInfo()" style="border:none;background:none;font-size:20px;cursor:pointer;color:#555;padding:0 4px;line-height:1;">&#10005;</button>
-    </div>
-    <iframe id="infoFrame" style="width:100%;height:calc(100% - 28px);border:none;" src="about:blank"></iframe>
-  </div>
-</div>
-
 </body>
 </html>

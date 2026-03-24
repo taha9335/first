@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feldzuordnungen – Zulassungsbescheinigung Teil I</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #313131;
+    background: #f4f4f4;
+  }
+
+  /* ── Bottom nav bar (matches GTÜ style: << zurück | Fenster schließen | weiter >>) ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #ccc;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    z-index: 999;
+    font-size: 12px;
+  }
+  .bottom-nav a {
+    color: #127bb5;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .bottom-nav a:hover { text-decoration: underline; }
+  .bottom-nav .sep { color: #aaa; }
+
+  /* ── Page content ── */
+  .page-wrap {
+    padding: 14px 16px 52px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 13px;
+    font-weight: bold;
+    color: #127bb5;
+    border-bottom: 2px solid #127bb5;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* ── Main table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  thead tr { background: #127bb5; color: #fff; }
+  thead th {
+    padding: 5px 8px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #0d6097;
+    font-size: 11px;
+  }
+  tbody tr { background: #fff; }
+  tbody tr:nth-child(even) { background: #f0f0f0; }
+  tbody tr:hover { background: #d6ecf8; cursor: pointer; }
+  tbody td {
+    padding: 3px 8px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+  td.col-zb {
+    width: 70px;
+    font-weight: bold;
+    color: #127bb5;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+  }
+  td.col-bez { width: auto; }
+  td.col-fs {
+    width: 110px;
+    color: #313131;
+  }
+  td.col-fs .neu  { color: #cc0000; font-weight: bold; }
+  td.col-fs .ent  { color: #cc0000; font-weight: bold; }
+
+  .footer-note {
+    font-size: 10px;
+    color: #666;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 6px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <h1>Feldzuordnungen – Zulassungsbescheinigung Teil I</h1>
+
+  <table id="feldTable">
+    <thead>
+      <tr>
+        <th style="width:70px;">Feld in der Zulassungs­bescheinigung</th>
+        <th>Feldbezeichnung</th>
+        <th style="width:110px;">Feld im Fahrzeugschein</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Each row: data-url = popup file, data-idx = sequential index -->
+      <tr data-url="b_erstzulassung.htm" data-idx="0">
+        <td class="col-zb">B</td>
+        <td class="col-bez">Datum der Erstzulassung des Fahrzeuges</td>
+        <td class="col-fs">32</td>
+      </tr>
+      <tr data-url="d1_marke.htm" data-idx="1">
+        <td class="col-zb">D.1</td>
+        <td class="col-bez">Marke</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="d2_typ.htm" data-idx="2">
+        <td class="col-zb">D.2</td>
+        <td class="col-bez">Typ/Variante/Version</td>
+        <td class="col-fs">3</td>
+      </tr>
+      <tr data-url="d3_handelsbezeichnung.htm" data-idx="3">
+        <td class="col-zb">D.3</td>
+        <td class="col-bez">Handelsbezeichnung(en)</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="e_fzg-ident-nr.htm" data-idx="4">
+        <td class="col-zb">E</td>
+        <td class="col-bez">Fahrzeug-Identifizierungsnummer</td>
+        <td class="col-fs">4</td>
+      </tr>
+      <tr data-url="f1_zgm.htm" data-idx="5">
+        <td class="col-zb">F.1</td>
+        <td class="col-bez">Technisch zulässige Gesamtmasse in kg</td>
+        <td class="col-fs">15</td>
+      </tr>
+      <tr data-url="f2_zgm_staat.htm" data-idx="6">
+        <td class="col-zb">F.2</td>
+        <td class="col-bez">Im Zulassungsmitgliedstaat zulässige Gesamtmasse in kg</td>
+        <td class="col-fs">15</td>
+      </tr>
+      <tr data-url="g_leermasse.htm" data-idx="7">
+        <td class="col-zb">G</td>
+        <td class="col-bez">Masse des in Betrieb befindlichen Fahrzeugs in kg (Leermasse)</td>
+        <td class="col-fs">14</td>
+      </tr>
+      <tr data-url="j_fzg-klasse.htm" data-idx="8">
+        <td class="col-zb">J</td>
+        <td class="col-bez">Fahrzeugklasse</td>
+        <td class="col-fs">1</td>
+      </tr>
+      <tr data-url="k_eg-typ_abe.htm" data-idx="9">
+        <td class="col-zb">K</td>
+        <td class="col-bez">Nummer der EG-Typgenehmigung oder ABE</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="l_achsen.htm" data-idx="10">
+        <td class="col-zb">L</td>
+        <td class="col-bez">Anzahl der Achsen</td>
+        <td class="col-fs">18</td>
+      </tr>
+      <tr data-url="o1_anhaengelast_gebremst.htm" data-idx="11">
+        <td class="col-zb">O.1</td>
+        <td class="col-bez">Technisch zulässige Anhängelast gebremst in kg</td>
+        <td class="col-fs">28</td>
+      </tr>
+      <tr data-url="o2_anhaengelast_ungebremst.htm" data-idx="12">
+        <td class="col-zb">O.2</td>
+        <td class="col-bez">Technisch zulässige Anhängelast ungebremst in kg</td>
+        <td class="col-fs">29</td>
+      </tr>
+      <tr data-url="p1_hubraum.htm" data-idx="13">
+        <td class="col-zb">P.1</td>
+        <td class="col-bez">Hubraum in cm³</td>
+        <td class="col-fs">8</td>
+      </tr>
+      <tr data-url="p2_p4_leistung.htm" data-idx="14">
+        <td class="col-zb">P.2/P.4</td>
+        <td class="col-bez">Nennleistung in kW/Nenndrehzahl bei min⁻¹</td>
+        <td class="col-fs">7</td>
+      </tr>
+      <tr data-url="p3_kraftstoffart.htm" data-idx="15">
+        <td class="col-zb">P.3</td>
+        <td class="col-bez">Kraftstoffart oder Energiequelle</td>
+        <td class="col-fs">5</td>
+      </tr>
+      <tr data-url="q_leistungsgewicht.htm" data-idx="16">
+        <td class="col-zb">Q</td>
+        <td class="col-bez">Leistungsgewicht in kW/kg (nur bei Krafträdern)</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="r_farbe.htm" data-idx="17">
+        <td class="col-zb">R</td>
+        <td class="col-bez">Farbe des Fahrzeuges</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="s1_sitzplaetze.htm" data-idx="18">
+        <td class="col-zb">S.1</td>
+        <td class="col-bez">Sitzplätze einschließlich Fahrersitz</td>
+        <td class="col-fs">12</td>
+      </tr>
+      <tr data-url="s2_stehplaetze.htm" data-idx="19">
+        <td class="col-zb">S.2</td>
+        <td class="col-bez">Stehplätze</td>
+        <td class="col-fs">11</td>
+      </tr>
+      <tr data-url="t_geschwindigkeit.htm" data-idx="20">
+        <td class="col-zb">T</td>
+        <td class="col-bez">Höchstgeschwindigkeit in km/h</td>
+        <td class="col-fs">6</td>
+      </tr>
+      <tr data-url="u1_standgeraeusch.htm" data-idx="21">
+        <td class="col-zb">U.1</td>
+        <td class="col-bez">Standgeräusche in dB(A)</td>
+        <td class="col-fs">30</td>
+      </tr>
+      <tr data-url="u2_drehzahl.htm" data-idx="22">
+        <td class="col-zb">U.2</td>
+        <td class="col-bez">Drehzahl in min⁻¹ zu U.1</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="u3_fahrgeraeusch.htm" data-idx="23">
+        <td class="col-zb">U.3</td>
+        <td class="col-bez">Fahrgeräusch in dB(A)</td>
+        <td class="col-fs">31</td>
+      </tr>
+      <tr data-url="v7_co2.htm" data-idx="24">
+        <td class="col-zb">V.7</td>
+        <td class="col-bez">CO₂ in g/km) kombinierter Wert</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="v9_schadstoffklasse.htm" data-idx="25">
+        <td class="col-zb">V.9</td>
+        <td class="col-bez">Für die EG-Typgenehmigung maßgebliche Schadstoffklasse</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="" data-idx="26">
+        <td class="col-zb">(2)</td>
+        <td class="col-bez">Hersteller-Kurzbezeichnung</td>
+        <td class="col-fs">2</td>
+      </tr>
+      <tr data-url="02-1_code_22.htm" data-idx="27">
+        <td class="col-zb">(2.1)</td>
+        <td class="col-bez">Code zu (2) 2</td>
+        <td class="col-fs">2</td>
+      </tr>
+      <tr data-url="02-2_code_d2.htm" data-idx="28">
+        <td class="col-zb">(2.2)</td>
+        <td class="col-bez">Code zu D.2 mit Prüfziffer 3</td>
+        <td class="col-fs">3</td>
+      </tr>
+      <tr data-url="03_fzg-ident-nr.htm" data-idx="29">
+        <td class="col-zb">(3)</td>
+        <td class="col-bez">Prüfziffer zur Fahrzeug-Identifizierungsnummer 4 rechts</td>
+        <td class="col-fs">4 rechts</td>
+      </tr>
+      <tr data-url="04_aufbau.htm" data-idx="30">
+        <td class="col-zb">(4)</td>
+        <td class="col-bez">Art des Aufbaus</td>
+        <td class="col-fs">1</td>
+      </tr>
+      <tr data-url="05_fzg-klasse.htm" data-idx="31">
+        <td class="col-zb">(5)</td>
+        <td class="col-bez">Bezeichnung der Fahrzeugklasse und des Aufbaus</td>
+        <td class="col-fs">1</td>
+      </tr>
+      <tr data-url="06_datum.htm" data-idx="32">
+        <td class="col-zb">(6)</td>
+        <td class="col-bez">Datum zu K</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="07-1_achslast_max.htm" data-idx="33">
+        <td class="col-zb">(7)</td>
+        <td class="col-bez">Technisch zulässige maximale Achslast/Masse je Achsgruppe in kg</td>
+        <td class="col-fs"><span class="ent">Entfällt</span></td>
+      </tr>
+      <tr data-url="07-1_achslast_max.htm" data-idx="34">
+        <td class="col-zb">(7.1)</td>
+        <td class="col-bez">Achse 1 bis (7.3) Achse 3</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="08-1_achslast_max.htm" data-idx="35">
+        <td class="col-zb">(8)</td>
+        <td class="col-bez">Zulässige maximale Achslast im Zulassungsmitgliedstaat in kg</td>
+        <td class="col-fs"><span class="ent">Entfällt</span></td>
+      </tr>
+      <tr data-url="08-1_achslast_max.htm" data-idx="36">
+        <td class="col-zb">(8.1)</td>
+        <td class="col-bez">Achse 1 bis (8.3) Achse 3</td>
+        <td class="col-fs">16</td>
+      </tr>
+      <tr data-url="09_antriebsachsen.htm" data-idx="37">
+        <td class="col-zb">(9)</td>
+        <td class="col-bez">Anzahl der Antriebsachsen</td>
+        <td class="col-fs">19</td>
+      </tr>
+      <tr data-url="10_code_p3.htm" data-idx="38">
+        <td class="col-zb">(10)</td>
+        <td class="col-bez">Code zu P.3</td>
+        <td class="col-fs">5</td>
+      </tr>
+      <tr data-url="11_code_r.htm" data-idx="39">
+        <td class="col-zb">(11)</td>
+        <td class="col-bez">Code zu R 32 rechts</td>
+        <td class="col-fs"><span class="ent">Entfällt</span></td>
+      </tr>
+      <tr data-url="12_tankinhalt.htm" data-idx="40">
+        <td class="col-zb">(12)</td>
+        <td class="col-bez">Rauminhalt des Tanks bei Tankfahrzeugen in m³</td>
+        <td class="col-fs">10</td>
+      </tr>
+      <tr data-url="13_stuetzlast.htm" data-idx="41">
+        <td class="col-zb">(13)</td>
+        <td class="col-bez">Stützlast in kg</td>
+        <td class="col-fs">9/16</td>
+      </tr>
+      <tr data-url="14_emissionsklasse.htm" data-idx="42">
+        <td class="col-zb">(14)</td>
+        <td class="col-bez">Bezeichnung der nationalen Emissionsklasse</td>
+        <td class="col-fs">1</td>
+      </tr>
+      <tr data-url="14-1_code_v9.htm" data-idx="43">
+        <td class="col-zb">(14.1)</td>
+        <td class="col-bez">Code zu V.9 oder (14)</td>
+        <td class="col-fs">1</td>
+      </tr>
+      <tr data-url="15-1_bereifung.htm" data-idx="44">
+        <td class="col-zb">(15)</td>
+        <td class="col-bez">Bereifung (15.1) auf Achse 1 bis (15.3) auf Achse 3</td>
+        <td class="col-fs">20/21</td>
+      </tr>
+      <tr data-url="16_zulassungsbescheinigung.htm" data-idx="45">
+        <td class="col-zb">(16)</td>
+        <td class="col-bez">Nummer der Zulassungsbescheinigung Teil II</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="17_betriebserlaubnis.htm" data-idx="46">
+        <td class="col-zb">(17)</td>
+        <td class="col-bez">Merkmal zur Betriebserlaubnis</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="18_laenge.htm" data-idx="47">
+        <td class="col-zb">(18)</td>
+        <td class="col-bez">Länge in mm</td>
+        <td class="col-fs">13 L</td>
+      </tr>
+      <tr data-url="19_breite.htm" data-idx="48">
+        <td class="col-zb">(19)</td>
+        <td class="col-bez">Breite in mm</td>
+        <td class="col-fs">13 B</td>
+      </tr>
+      <tr data-url="20_hoehe.htm" data-idx="49">
+        <td class="col-zb">(20)</td>
+        <td class="col-bez">Höhe in mm</td>
+        <td class="col-fs">13 H</td>
+      </tr>
+      <tr data-url="21_vermerke.htm" data-idx="50">
+        <td class="col-zb">(21)</td>
+        <td class="col-bez">Sonstige Vermerke</td>
+        <td class="col-fs"><span class="neu">Neu</span></td>
+      </tr>
+      <tr data-url="22_bemerkungen.htm" data-idx="51">
+        <td class="col-zb">(22)</td>
+        <td class="col-bez">Bemerkungen und Ausnahmen</td>
+        <td class="col-fs">33</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer-note">
+    © GTÜ 11/2010 · www.gtue.de · technik-hotline@gtue.de
+  </div>
+</div>
+
+<!-- Bottom navigation bar -->
+<div class="bottom-nav">
+  <a id="btnZurueck" onclick="navZurueck()">&lt;&lt; zurück</a>
+  <span class="sep">|</span>
+  <a onclick="fensterSchliessen()">Fenster schließen</a>
+  <span class="sep">|</span>
+  <a id="btnWeiter" onclick="navWeiter()">weiter &gt;&gt;</a>
+</div>
+
+<script>
+(function() {
+  var infoBase = 'https://taha9335.github.io/first/info-seiten-coc/';
+
+  // Build ordered list of rows that have a popup URL
+  var rows = Array.from(document.querySelectorAll('#feldTable tbody tr'));
+
+  // Track current navigation index (which popup row we're on)
+  // -1 means we are on the feldzuordnungen page itself (no popup open)
+  var currentPopupIdx = -1;
+
+  // Highlight a row
+  function highlightRow(idx) {
+    rows.forEach(function(r) { r.style.background = ''; });
+    if (idx >= 0 && idx < rows.length) {
+      rows[idx].style.background = '#b3d9f0';
+      rows[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // Open a popup by row index
+  function openPopup(rowIdx) {
+    var row = rows[rowIdx];
+    if (!row) return;
+    var url = row.getAttribute('data-url');
+    if (!url) {
+      // No popup for this field — just highlight and move on
+      currentPopupIdx = rowIdx;
+      highlightRow(rowIdx);
+      return;
+    }
+    currentPopupIdx = rowIdx;
+    highlightRow(rowIdx);
+    window.parent.postMessage({ action: 'openPopup', url: infoBase + url }, '*');
+  }
+
+  // Navigate weiter: open first popup on first press, then next each press
+  window.navWeiter = function() {
+    var nextIdx = currentPopupIdx + 1;
+    if (nextIdx >= rows.length) nextIdx = 0; // wrap around
+    openPopup(nextIdx);
+  };
+
+  // Navigate zurück
+  window.navZurueck = function() {
+    if (currentPopupIdx <= 0) {
+      // Go back to previous page / close
+      window.parent.postMessage({ action: 'goBack' }, '*');
+      return;
+    }
+    var prevIdx = currentPopupIdx - 1;
+    openPopup(prevIdx);
+  };
+
+  // Close window
+  window.fensterSchliessen = function() {
+    window.parent.postMessage('closeModal', '*');
+  };
+
+  // Click on a row directly
+  rows.forEach(function(row, idx) {
+    row.addEventListener('click', function() {
+      openPopup(idx);
+    });
+  });
+
+  // Listen for messages from parent (e.g. popup closed → stay on current row)
+  window.addEventListener('message', function(e) {
+    if (e.data === 'popupClosed') {
+      // popup was closed externally, keep highlight
+    }
+  });
+})();
+</script>
+</body>
+</html>

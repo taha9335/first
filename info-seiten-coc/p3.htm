@@ -6,7 +6,7 @@
 <link href="../styles-info.css" rel="stylesheet" type="text/css">
 <style>
   /* Updated styles to force black color */
-  .title_black { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #000000; margin-bottom: 10px; }
+  .title_black { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #000000 !important; margin-bottom: 10px; }
   .link_black { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; text-decoration: none; }
   .link_black:hover { text-decoration: underline; }
 </style>
@@ -110,8 +110,8 @@
  </tr>
  <tr>
   <td><br>
-   <p style="text-align: center; margin: 0; padding: 10px 0;">
-    <a href="javascript:window.parent.postMessage('closeModal','*');" class="link_black">Fenster schließen</a>
+   <p class="text_zentriert">
+     <a href="#" onclick="window.parent.postMessage('closeModal','*'); return false;" style="color: #000000 !important; text-decoration: none;">Fenster schlie&szlig;en</a>
    </p>
   </td>
  </tr>
